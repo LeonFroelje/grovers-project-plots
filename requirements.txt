@@ -1,0 +1,8 @@
+qiskit
+jupyter
+notebook
+matplotlib
+pylatexenc
+qiskit_aer
+qiskit_algorithms
+pandas
