@@ -386,15 +386,9 @@ def tester(numVals, maxVal=None, width=None):
         print("number list: "+str(randomlist)+ "|  target: "+str(target))
         qsub1 = QSubsetSum(copy.deepcopy(randomlist), target)
         ans = qsub1.run(True, True, True, True) #varArith with sorted values and partial sum
-        qsub2 = QSubsetSum(copy.deepcopy(randomlist), target)
-        ans2 = qsub2.run(True, False, True, True) #varArith with unsorted values and partial sum
-        qsub3 = QSubsetSum(copy.deepcopy(randomlist), target)
-        ans3 = qsub3.run(True, False, False, True) #varArith with unsorted values and total sum
-        qsub4 = QSubsetSum(copy.deepcopy(randomlist), target)
-        ans4 = qsub4.run(True, False, False, False, width) #fixedArith with sorted values and partial sum
-        return ans, ans2, ans3, ans4
+        return ans
 
-d = {'sorted,partial,varArith':[], 'unsorted,partial,varArith':[], 'unsorted,bigSum,varArith':[], 'fixed32bit':[]}
+d = {'sorted,partial,varArith':[]}
 
 for num in range(5, 101, 5):
     #64 max
@@ -402,8 +396,9 @@ for num in range(5, 101, 5):
     qubitdf = pd.DataFrame(data=d)
     for i in range(100):
         test = tester(num, 64, 32)
-        qubitdf.loc[len(gatedf.index)] = [test[0][0], test[1][0],test[2][0], test[3][0]]
-        gatedf.loc[len(qubitdf.index)] = [test[0][1], test[1][1],test[2][1], test[3][1]]
+        print(test)
+        qubitdf.loc[len(gatedf.index)] = [test[0]] 
+        gatedf.loc[len(qubitdf.index)] = [test[1]]
     gatedf.loc[len(gatedf.index)] = gatedf.mean()
     qubitdf.loc[len(qubitdf.index)] = qubitdf.mean()
 
@@ -415,8 +410,8 @@ for num in range(5, 101, 5):
     qubitdf = pd.DataFrame(data=d)
     for i in range(100):
         test = tester(num, 128, 32)
-        qubitdf.loc[len(gatedf.index)] = [test[0][0], test[1][0],test[2][0], test[3][0]]
-        gatedf.loc[len(qubitdf.index)] = [test[0][1], test[1][1],test[2][1], test[3][1]]
+        qubitdf.loc[len(gatedf.index)] = [test[0]]
+        gatedf.loc[len(qubitdf.index)] = [test[1]]
     gatedf.loc[len(qubitdf.index)] = gatedf.mean()
     qubitdf.loc[len(gatedf.index)] = qubitdf.mean()
 
@@ -428,8 +423,8 @@ for num in range(5, 101, 5):
     qubitdf = pd.DataFrame(data=d)
     for i in range(100):
         test = tester(num, 256, 32)
-        qubitdf.loc[len(gatedf.index)] = [test[0][0], test[1][0],test[2][0], test[3][0]]
-        gatedf.loc[len(qubitdf.index)] = [test[0][1], test[1][1],test[2][1], test[3][1]]
+        qubitdf.loc[len(gatedf.index)] = [test[0]]
+        gatedf.loc[len(qubitdf.index)] = [test[1]]
     gatedf.loc[len(gatedf.index)] = gatedf.mean()
     qubitdf.loc[len(qubitdf.index)] = qubitdf.mean()
 
@@ -492,12 +487,8 @@ def plot_data(groups, directory):
     # Define column labels according to the specified mapping
     column_labels = [
         "Optimal set ordering, varying width throughout",
-        "Set elements and sums varying width",
-        "Set elements varying width, sums fixed width",
-        "Fixed width 32 bit throughout"
     ]
     
-    print(files)
     for max_val, files in groups.items():
         plt.figure()  # Create a new figure for each max group
         plt.rcParams.update({'axes.labelsize': 'medium'})
@@ -514,7 +505,11 @@ def plot_data(groups, directory):
             plt.ylabel('Number of Gates')
             plt.title(f'Gate Counts for Maximum Value of {max_val}') 
         plt.legend(column_labels, fontsize = 9)
-        print(files)
+        if qubits:
+            plt.savefig(f"qubits_{max_val}.png")
+        else:
+            plt.savefig(f"gates_{max_val}.png")
+
 
 # Main function to orchestrate the operations
 def main(directory):
