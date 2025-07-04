@@ -1,4 +1,5 @@
 from qiskit import QuantumRegister, ClassicalRegister
+from lib.lib import oracle
 from qiskit import QuantumCircuit
 from qiskit import providers
 import qiskit
@@ -365,160 +366,53 @@ class QSubsetSum:
         self.qi.measure(ans)
         self.qi.qc.mbit(result)
         if test == True:
-            gateSum=0
-            gates = self.qc.getQuantumCircuit().count_ops()
+            singleGateSum=0
+            twoGateSum = 0
+            gates = qiskit.transpile(self.qc.getQuantumCircuit(), basis_gates=["h", "cx", "p"]).count_ops()
             for key, value in gates.items():
-                if key not in ['barrier', 'measure']:
-                    gateSum += value
-            return self.qc.regNum, gateSum
+                if key == "cx":
+                    twoGateSum += value
+                else:
+                    singleGateSum += value
+            return self.qc.qcx.num_qubits, singleGateSum, twoGateSum 
         return ans
 
-def tester(numVals, maxVal=None, width=None):
-        
-        if not maxVal:
-            maxVal = 64
-        randomlist = []
-        for i in range(int(numVals)):
-            n = random.randint(1,maxVal)
-            randomlist.append(n)
-        target = random.randint(1,sum(randomlist))
-        
-        print("number list: "+str(randomlist)+ "|  target: "+str(target))
-        qsub1 = QSubsetSum(copy.deepcopy(randomlist), target)
-        ans = qsub1.run(True, True, True, True) #varArith with sorted values and partial sum
-        return ans
 
-d = {'sorted,partial,varArith':[]}
+qubits_old = []
+qubits_new = []
 
-for num in range(5, 101, 5):
-    #64 max
-    gatedf = pd.DataFrame(data=d)
-    qubitdf = pd.DataFrame(data=d)
-    for i in range(100):
-        test = tester(num, 64, 32)
-        print(test)
-        qubitdf.loc[len(gatedf.index)] = [test[0]] 
-        gatedf.loc[len(qubitdf.index)] = [test[1]]
-    gatedf.loc[len(gatedf.index)] = gatedf.mean()
-    qubitdf.loc[len(qubitdf.index)] = qubitdf.mean()
+single_gates_old = []
+single_gates_new = []
 
-    qubitdf.to_csv('tests/qubitTests/qubit'+str(num)+'vals64max.csv')
-    gatedf.to_csv('tests/gateTests/gate'+str(num)+'vals64max.csv')
+multi_gates_old = []
+multi_gates_new = []
+for size in range(5, 101, 5):
+    for max_value in [64, 128, 256]:
+        df_old = pd.DataFrame(columns=["qubits", "singleGates", "multiGates"])
+        df_new = pd.DataFrame(columns=["qubits", "singleGates", "multiGates"])
+        for i in range(100):
+            randomlist = np.astype(np.ceil(np.random.rand(size) * max_value), np.int32)
+            print(randomlist)
+            target = random.randint(1,np.sum(randomlist))
+            qsub1 = QSubsetSum(copy.deepcopy(randomlist), target)
+            ans = qsub1.run(True, True, True, True) #varArith with sorted values and partial sum
 
-    #128 max
-    gatedf = pd.DataFrame(data=d)
-    qubitdf = pd.DataFrame(data=d)
-    for i in range(100):
-        test = tester(num, 128, 32)
-        qubitdf.loc[len(gatedf.index)] = [test[0]]
-        gatedf.loc[len(qubitdf.index)] = [test[1]]
-    gatedf.loc[len(qubitdf.index)] = gatedf.mean()
-    qubitdf.loc[len(gatedf.index)] = qubitdf.mean()
+            orcl = oracle(randomlist,target)
+            gates = qiskit.transpile(orcl, basis_gates=["h", "cx", "p"]).count_ops()
+            print(gates)
+            singleGates = 0
+            twoGates = 0
+            for key,val in zip(gates.keys(), gates.values()):
+                if key == "cx":
+                    twoGates += val
+                else:
+                    singleGates += val
 
-    qubitdf.to_csv('tests/qubitTests/qubit'+str(num)+'vals128max.csv')
-    gatedf.to_csv('tests/gateTests/gate'+str(num)+'vals128max.csv')
-
-    #256 max
-    gatedf = pd.DataFrame(data=d)
-    qubitdf = pd.DataFrame(data=d)
-    for i in range(100):
-        test = tester(num, 256, 32)
-        qubitdf.loc[len(gatedf.index)] = [test[0]]
-        gatedf.loc[len(qubitdf.index)] = [test[1]]
-    gatedf.loc[len(gatedf.index)] = gatedf.mean()
-    qubitdf.loc[len(qubitdf.index)] = qubitdf.mean()
-
-    qubitdf.to_csv('tests/qubitTests/qubit'+str(num)+'vals256max.csv')
-    gatedf.to_csv('tests/gateTests/gate'+str(num)+'vals256max.csv')
-
-
+            ans_new = orcl.num_qubits, singleGates, twoGates
+            print(df_old)
+            print(df_new)
+            df_old.loc[i] = list(ans)
+            df_new.loc[i] = list(ans_new)
+        df_old.to_csv(f'tests/{size}vals{max_value}max_old.csv')
+        df_new.to_csv(f'tests/{size}vals{max_value}max_new.csv')
     
-import os
-import numpy as np
-import matplotlib.pyplot as plt
-import csv
-import re
-
-# Function to list all relevant CSV files in the directory
-qubits = True
-def list_csv_files(directory):
-    return [f for f in os.listdir(directory) if f.endswith('max.csv')]
-
-# Function to parse filename and extract the values and max number
-def parse_filename(filename):
-    parts = filename.split('vals')[0], filename.split('max.csv')[0].split('vals')[-1]
-    pattern = r'\d+'
-    
-    # Find all matches of the pattern in the input string
-    match = re.findall(pattern, parts[0])
-    match = int(match[0])
-    return int(match), int(parts[1])  # Return vals, max as integers
-
-
-# Function to group files by their max value
-def group_files_by_max(files):
-    groups = {}
-    for file in files:
-        _, max_val = parse_filename(file)
-        if max_val not in groups:
-            groups[max_val] = [file]
-        else:
-            groups[max_val].append(file)
-    return groups
-
-
-# Function to extract the last line of each file, excluding the first column, and create a numpy array
-def create_numpy_array_for_group(files, directory):
-    data = []
-    for file in files:
-        vals, _ = parse_filename(file)
-        with open(os.path.join(directory, file), 'r') as csvfile:
-            for last_line in csvfile:
-                pass
-            # Exclude the first column ([1:]) from each CSV's last line
-            data.append([vals] + list(map(float, last_line.strip().split(',')[1:])))
-    data = np.array(data)
-    data = data[data[:, 0].argsort()]  # Sort by vals
-    return data
-
-
-# Function to plot the data from numpy arrays, with separate plots for each max group and labeled columns
-def plot_data(groups, directory):
-    # Define column labels according to the specified mapping
-    column_labels = [
-        "Optimal set ordering, varying width throughout",
-    ]
-    
-    for max_val, files in groups.items():
-        plt.figure()  # Create a new figure for each max group
-        plt.rcParams.update({'axes.labelsize': 'medium'})
-        data = create_numpy_array_for_group(files, directory)
-        for i in range(1, data.shape[1]):  # Skip the first column as it's vals
-            # Use the column index (i-1) to get the appropriate label from column_labels list
-            lbl = column_labels[i-1] if i-1 < len(column_labels) else f'Column {i}'
-            plt.plot(data[:, 0], data[:, i])
-        plt.xlabel('Set Size')
-        if qubits:
-            plt.ylabel('Number of Qubits')
-            plt.title(f'Qubit Counts for Maximum Value of {max_val}')
-        else:
-            plt.ylabel('Number of Gates')
-            plt.title(f'Gate Counts for Maximum Value of {max_val}') 
-        plt.legend(column_labels, fontsize = 9)
-        if qubits:
-            plt.savefig(f"qubits_{max_val}.png")
-        else:
-            plt.savefig(f"gates_{max_val}.png")
-
-
-# Main function to orchestrate the operations
-def main(directory):
-    files = list_csv_files(directory)
-    grouped_files = group_files_by_max(files)
-
-    plot_data(grouped_files, directory)
-# Note: Uncomment the line below and specify the directory path to run the script
-qubits = True
-main('tests/qubitTests')
-qubits = False
-main('tests/gateTests')
