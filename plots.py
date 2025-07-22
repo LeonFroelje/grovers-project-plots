@@ -386,7 +386,7 @@ single_gates_new = []
 
 multi_gates_old = []
 multi_gates_new = []
-for size in range(5, 101, 5):
+for size in range(55, 101, 5):
     for max_value in [64, 128, 256]:
         df_old = pd.DataFrame(columns=["qubits", "singleGates", "multiGates"])
         df_new = pd.DataFrame(columns=["qubits", "singleGates", "multiGates"])
