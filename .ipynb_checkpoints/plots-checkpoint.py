@@ -409,8 +409,6 @@ if __name__ == "__main__":
                         singleGates += val
     
                 ans_new = orcl.num_qubits, singleGates, twoGates
-                print(df_old)
-                print(df_new)
                 df_old.loc[i] = list(ans)
                 df_new.loc[i] = list(ans_new)
             df_old.to_csv(f'tests/{size}vals{max_value}max_old.csv')

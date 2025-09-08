@@ -386,16 +386,16 @@ if __name__ == "__main__":
     
     multi_gates_old = []
     multi_gates_new = []
-    for size in range(55, 101, 5):
+    for size in range(5, 101, 5):
         for max_value in [64, 128, 256]:
-            df_old = pd.DataFrame(columns=["qubits", "singleGates", "multiGates"])
+            # df_old = pd.DataFrame(columns=["qubits", "singleGates", "multiGates"])
             df_new = pd.DataFrame(columns=["qubits", "singleGates", "multiGates"])
             for i in range(100):
                 randomlist = np.astype(np.ceil(np.random.rand(size) * max_value), np.int32)
                 print(randomlist)
                 target = random.randint(1,np.sum(randomlist))
-                qsub1 = QSubsetSum(copy.deepcopy(randomlist), target)
-                ans = qsub1.run(True, True, True, True) #varArith with sorted values and partial sum
+                # qsub1 = QSubsetSum(copy.deepcopy(randomlist), target)
+                # ans = qsub1.run(True, True, True, True) #varArith with sorted values and partial sum
     
                 orcl = oracle(randomlist,target)
                 gates = qiskit.transpile(orcl, basis_gates=["h", "cx", "p"]).count_ops()
@@ -409,10 +409,8 @@ if __name__ == "__main__":
                         singleGates += val
     
                 ans_new = orcl.num_qubits, singleGates, twoGates
-                print(df_old)
-                print(df_new)
-                df_old.loc[i] = list(ans)
+                # df_old.loc[i] = list(ans)
                 df_new.loc[i] = list(ans_new)
-            df_old.to_csv(f'tests/{size}vals{max_value}max_old.csv')
+            # df_old.to_csv(f'tests/{size}vals{max_value}max_old.csv')
             df_new.to_csv(f'tests/{size}vals{max_value}max_new.csv')
         

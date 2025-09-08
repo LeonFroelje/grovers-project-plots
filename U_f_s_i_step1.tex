@@ -1,0 +1,16 @@
+\documentclass[border=2px]{standalone}
+
+\usepackage[braket, qm]{qcircuit}
+\usepackage{graphicx}
+
+\begin{document}
+\scalebox{1.0}{
+\Qcircuit @C=1.0em @R=0.2em @!R { \\
+	 	\nghost{{a}_{0} :  } & \lstick{{a}_{0} :  } & \qw & \qw & \ctrl{3} & \qw & \qw & \qw & \ctrl{4} & \qw & \qw & \qw & \ctrl{5} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
+	 	\nghost{{a}_{1} :  } & \lstick{{a}_{1} :  } & \gate{\mathrm{X}} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \ctrl{3} & \qw & \qw & \qw & \ctrl{4} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
+	 	\nghost{{a}_{2} :  } & \lstick{{a}_{2} :  } & \qw & \qw & \qw & \dstick{\hspace{2.0em}\mathrm{P}\,(\mathrm{\pi})} \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \ctrl{3} & \qw & \qw & \qw & \qw & \qw & \qw\\
+	 	\nghost{{b}_{0} :  } & \lstick{{b}_{0} :  } & \qw & \multigate{2}{\mathrm{QFT}}_<<<{0} & \control \qw & \qw & \qw & \qw & \qw & \dstick{\hspace{2.0em}\mathrm{P}\,(\mathrm{\frac{\pi}{2}})} \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \dstick{\hspace{2.0em}\mathrm{P}\,(\mathrm{\pi})} \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \multigate{2}{\mathrm{IQFT}}_<<<{0} & \qw & \qw\\
+	 	\nghost{{b}_{1} :  } & \lstick{{b}_{1} :  } & \qw & \ghost{\mathrm{QFT}}_<<<{1} & \qw & \qw & \qw & \qw & \control \qw & \qw & \qw & \qw & \qw & \dstick{\hspace{2.0em}\mathrm{P}\,(\mathrm{\frac{\pi}{4}})} \qw & \qw & \qw & \control \qw & \qw & \qw & \qw & \qw & \dstick{\hspace{2.0em}\mathrm{P}\,(\mathrm{\frac{\pi}{2}})} \qw & \qw & \qw & \qw & \dstick{\hspace{2.0em}\mathrm{P}\,(\mathrm{\pi})} \qw & \qw & \qw & \ghost{\mathrm{IQFT}}_<<<{1} & \qw & \qw\\
+	 	\nghost{{b}_{2} :  } & \lstick{{b}_{2} :  } & \gate{\mathrm{X}} & \ghost{\mathrm{QFT}}_<<<{2} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \control \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \control \qw & \qw & \qw & \qw & \control \qw & \qw & \qw & \qw & \ghost{\mathrm{IQFT}}_<<<{2} & \qw & \qw\\
+\\ }}
+\end{document}

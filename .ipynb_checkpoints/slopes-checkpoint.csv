@@ -1,0 +1,19 @@
+,Metric,Max Value,Version,Slope
+0,Mean Qubits,64,Reference,30.556565531475755
+1,Mean Qubits,64,New,1.0421444788441696
+2,Mean Qubits,128,Reference,34.31097832817338
+3,Mean Qubits,128,New,1.041952528379773
+4,Mean Qubits,256,Reference,38.24282972136223
+5,Mean Qubits,256,New,1.0423488132094945
+6,Mean Single Gates,64,Reference,235.6731104231166
+7,Mean Single Gates,64,New,68.21813622291022
+8,Mean Single Gates,128,Reference,269.0686418988648
+9,Mean Single Gates,128,New,71.72829102167182
+10,Mean Single Gates,256,Reference,303.54038390092876
+11,Mean Single Gates,256,New,75.89645614035088
+12,Mean Multi Gates,64,Reference,174.74985139318883
+13,Mean Multi Gates,64,New,47.615001031991746
+14,Mean Multi Gates,128,Reference,200.12217750257992
+15,Mean Multi Gates,128,New,51.8735851393189
+16,Mean Multi Gates,256,Reference,226.64597523219814
+17,Mean Multi Gates,256,New,56.22113519091847

@@ -46,24 +46,27 @@ def oracle(S, T, old=False, uncompute=True):
     target_register = QuantumRegister(d, "target")
     data_measure = ClassicalRegister(len(S), "target_M")
     qc.add_register(target_register, data_measure)
+    ancilla_register = QuantumRegister(1, "|->")
 
     encoded_target = encode_target(T, d)
     for i in range(d):
         if encoded_target[i] == '1':
             qc.x(target_register[i])
     qc.append(QFTGate(d), target_register)
-
+    
     for i in range(len(S)):
         n = S[i]
         rotation_adder = RotationAdd(-n, d, old=old)
         qc.append(rotation_adder, [data_register[i]] + list(target_register))
     qc.append(QFTGate(d).inverse(), target_register)
     qc.x(target_register)
-    
-    qc.append(MCMTGate(gate=ZGate(), num_ctrl_qubits=d, num_target_qubits=1),[0] + list(range(qc.num_qubits - d, qc.num_qubits)) )
-    qc.mcx(target_register, 0)
-    qc.append(MCMTGate(gate=ZGate(), num_ctrl_qubits=d, num_target_qubits=1),[0] + list(range(qc.num_qubits - d, qc.num_qubits)))
-    qc.mcx(target_register, 0)
+
+    #qc.mcx(target_register, ancilla_register)
+    qc.append(MCMTGate(gate=ZGate(), num_ctrl_qubits=d-1, num_target_qubits=1), target_register)
+    # qc.append(MCMTGate(gate=ZGate(), num_ctrl_qubits=d, num_target_qubits=1),[0] + list(range(qc.num_qubits - d, qc.num_qubits)) )
+    # qc.mcx(target_register, 0)
+    # qc.append(MCMTGate(gate=ZGate(), num_ctrl_qubits=d, num_target_qubits=1),[0] + list(range(qc.num_qubits - d, qc.num_qubits)))
+    # qc.mcx(target_register, 0)
     if uncompute:
         qc.x(target_register)
     
@@ -107,12 +110,13 @@ def test_phase_flip(S,T):
 
 
 def test_grovers(S,T,n = 1):
-    orcl = oracle(S,T)
-    statevectors = []
+    orcl = oracle(S, T, old=True)
     qc = QuantumCircuit(orcl.num_qubits, orcl.num_clbits)
     qc.h(list(range(len(S))))
-    qc.compose(orcl, list(range(orcl.num_qubits)), list(range(orcl.num_clbits)),inplace=True, wrap=False)
-    
+
+    qc.append(grover_operator(orcl, reflection_qubits=list(range(len(S)))).power(n),
+              list(range(orcl.num_qubits)), list(range(orcl.num_clbits)))
+
     qc.save_statevector()
     
     simulator = AerSimulator(method='matrix_product_state')
