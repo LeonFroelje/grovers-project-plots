@@ -2,8 +2,10 @@ import qiskit
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from qiskit.circuit.library import QFTGate, grover_operator, MCMTGate, ZGate, HGate
 from qiskit_aer import AerSimulator
+from qiskit_aer.noise import NoiseModel
 from qiskit.quantum_info import DensityMatrix
 from math import log2, ceil, pi, sqrt
+from qiskit.transpiler import generate_preset_pass_manager
 import numpy as np
 from enum import Enum
 import pandas as pd
@@ -61,12 +63,7 @@ def oracle(S, T, old=False, uncompute=True):
     qc.append(QFTGate(d).inverse(), target_register)
     qc.x(target_register)
 
-    #qc.mcx(target_register, ancilla_register)
     qc.append(MCMTGate(gate=ZGate(), num_ctrl_qubits=d-1, num_target_qubits=1), target_register)
-    # qc.append(MCMTGate(gate=ZGate(), num_ctrl_qubits=d, num_target_qubits=1),[0] + list(range(qc.num_qubits - d, qc.num_qubits)) )
-    # qc.mcx(target_register, 0)
-    # qc.append(MCMTGate(gate=ZGate(), num_ctrl_qubits=d, num_target_qubits=1),[0] + list(range(qc.num_qubits - d, qc.num_qubits)))
-    # qc.mcx(target_register, 0)
     if uncompute:
         qc.x(target_register)
     
@@ -183,7 +180,7 @@ def simulate_bitflip(S,T):
     result = simulator.run(circ, shots=4096).result().get_counts()
     return pd.Series(result).sort_values(ascending=False)
 
-def simulate(S, T, num_sols, old=False):
+def simulate(S, T, num_sols, old=False, backend="matrix_product_state", noisy=False):
     if num_sols > 0:
         num_iter = ceil(sqrt(2 ** len(S) / num_sols) * 0.5)
     else:
@@ -197,8 +194,20 @@ def simulate(S, T, num_sols, old=False):
 
     for j in range(len(S)):
         qc.measure(j, j)
-
-    simulator = AerSimulator(method='matrix_product_state')
+    if noisy:
+        noise_model = NoiseModel.from_backend(backend)
+        sim_noise = AerSimulator(noise_model=noise_model)
+         
+        passmanager = generate_preset_pass_manager(
+            optimization_level=3, backend=sim_noise
+        )
+        circ_tnoise = passmanager.run(qc)
+         
+        result = sim_noise.run(circ_tnoise).result().get_counts()
+        #counts_bit_flip = result_bit_flip.get_counts(0)
+         
+        return pd.Series(result).sort_values(ascending=False)
+    simulator = AerSimulator(method=backend)
     simulator.set_max_qubits(qc.num_qubits)
     circ = qiskit.transpile(qc, simulator)
     result = simulator.run(circ, shots=4096).result().get_counts()
@@ -216,3 +225,4 @@ def groversearch(S, T, num_sols, old=False):
     qc.append(grover_operator(orcl, reflection_qubits=list(range(len(S)))).power(num_iter),
               list(range(orcl.num_qubits)), list(range(orcl.num_clbits)))
     return qc
+
