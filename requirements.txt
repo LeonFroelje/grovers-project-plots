@@ -6,3 +6,4 @@ pylatexenc
 qiskit_aer
 qiskit_algorithms
 pandas
+qiskit_ibm_runtime

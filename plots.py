@@ -369,6 +369,10 @@ class QSubsetSum:
             singleGateSum=0
             twoGateSum = 0
             gates = qiskit.transpile(self.qc.getQuantumCircuit(), basis_gates=["h", "cx", "p"]).count_ops()
+            with open("reference_resources_raw", "a+") as f:
+                f.write(f"Qubits: {self.qc.qcx.num_qubits}")
+                f.write(f"Gates: {gates}")
+                f.write("\n\n\n")
             for key, value in gates.items():
                 if key == "cx":
                     twoGateSum += value
