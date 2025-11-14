@@ -1,0 +1,676 @@
+'QUbits 9  Depth: 333'
+
+'QUbits 11  Depth: 692'
+
+'QUbits 13  Depth: 802'
+
+'QUbits 14  Depth: 848'
+
+'QUbits 16  Depth: 1000'
+
+'QUbits 17  Depth: 1075'
+
+'QUbits 18  Depth: 1734'
+
+'QUbits 19  Depth: 2040'
+
+'QUbits 21  Depth: 2291'
+
+'QUbits 22  Depth: 2411'
+
+'QUbits 23  Depth: 2534'
+
+'QUbits 24  Depth: 2657'
+
+'QUbits 25  Depth: 2772'
+
+'QUbits 26  Depth: 2904'
+
+'QUbits 27  Depth: 4000'
+
+'QUbits 28  Depth: 3530'
+
+'QUbits 30  Depth: 3790'
+
+'QUbits 31  Depth: 3854'
+
+'QUbits 32  Depth: 3944'
+
+'QUbits 33  Depth: 4027'
+
+'QUbits 34  Depth: 4203'
+
+'QUbits 35  Depth: 4267'
+
+'QUbits 36  Depth: 4331'
+
+'QUbits 37  Depth: 4395'
+
+'QUbits 38  Depth: 4460'
+
+'QUbits 39  Depth: 5640'
+
+'QUbits 40  Depth: 5720'
+
+'QUbits 41  Depth: 5800'
+
+'QUbits 42  Depth: 5880'
+
+'QUbits 43  Depth: 5960'
+
+'QUbits 44  Depth: 6040'
+
+'QUbits 45  Depth: 6152'
+
+'QUbits 47  Depth: 6440'
+
+'QUbits 48  Depth: 6520'
+
+'QUbits 49  Depth: 6600'
+
+'QUbits 50  Depth: 6720'
+
+'QUbits 51  Depth: 6820'
+
+'QUbits 52  Depth: 7000'
+
+'QUbits 53  Depth: 7080'
+
+'QUbits 54  Depth: 7160'
+
+'QUbits 55  Depth: 8675'
+
+'QUbits 56  Depth: 8771'
+
+'QUbits 57  Depth: 8867'
+
+'QUbits 58  Depth: 8963'
+
+'QUbits 59  Depth: 9078'
+
+'QUbits 60  Depth: 9174'
+
+'QUbits 61  Depth: 9332'
+
+'QUbits 62  Depth: 9428'
+
+'QUbits 63  Depth: 9573'
+
+'QUbits 64  Depth: 9669'
+
+'QUbits 65  Depth: 9765'
+
+'QUbits 66  Depth: 9861'
+
+'QUbits 67  Depth: 10005'
+
+'QUbits 68  Depth: 10125'
+
+'QUbits 69  Depth: 10197'
+
+'QUbits 70  Depth: 10293'
+
+'QUbits 71  Depth: 10461'
+
+'QUbits 72  Depth: 10509'
+
+'QUbits 73  Depth: 12417'
+
+'QUbits 74  Depth: 12529'
+
+'QUbits 75  Depth: 12697'
+
+'QUbits 76  Depth: 12759'
+
+'QUbits 77  Depth: 12927'
+
+'QUbits 78  Depth: 13039'
+
+'QUbits 80  Depth: 13441'
+
+'QUbits 81  Depth: 13553'
+
+'QUbits 82  Depth: 13677'
+
+'QUbits 83  Depth: 13789'
+
+'QUbits 84  Depth: 13957'
+
+'QUbits 85  Depth: 14053'
+
+'QUbits 86  Depth: 14361'
+
+'QUbits 87  Depth: 14473'
+
+'QUbits 88  Depth: 14585'
+
+'QUbits 89  Depth: 14697'
+
+'QUbits 90  Depth: 14809'
+
+'QUbits 91  Depth: 14921'
+
+'QUbits 92  Depth: 15033'
+
+'QUbits 93  Depth: 15145'
+
+'QUbits 94  Depth: 15257'
+
+'QUbits 95  Depth: 17555'
+
+'QUbits 96  Depth: 17683'
+
+'QUbits 97  Depth: 17811'
+
+'QUbits 98  Depth: 17939'
+
+'QUbits 99  Depth: 18067'
+
+'QUbits 100  Depth: 18195'
+
+'QUbits 101  Depth: 18323'
+
+'QUbits 102  Depth: 18451'
+
+'QUbits 103  Depth: 18579'
+
+'QUbits 104  Depth: 18707'
+
+'QUbits 105  Depth: 18835'
+
+'QUbits 106  Depth: 18963'
+
+'QUbits 107  Depth: 19091'
+
+'QUbits 108  Depth: 19219'
+
+'QUbits 109  Depth: 19347'
+
+'QUbits 110  Depth: 19475'
+
+'QUbits 111  Depth: 19603'
+
+'QUbits 112  Depth: 19732'
+
+'QUbits 113  Depth: 19860'
+
+'QUbits 114  Depth: 19988'
+
+'QUbits 115  Depth: 20116'
+
+'QUbits 116  Depth: 20244'
+
+'QUbits 117  Depth: 20372'
+
+'QUbits 118  Depth: 20500'
+
+'QUbits 119  Depth: 23198'
+
+'QUbits 120  Depth: 23342'
+
+'QUbits 121  Depth: 23486'
+
+'QUbits 122  Depth: 23630'
+
+'QUbits 123  Depth: 23774'
+
+'QUbits 124  Depth: 23918'
+
+'QUbits 125  Depth: 24118'
+
+'QUbits 126  Depth: 24262'
+
+'QUbits 127  Depth: 24350'
+
+'QUbits 128  Depth: 24494'
+
+'QUbits 129  Depth: 24694'
+
+'QUbits 130  Depth: 24782'
+
+'QUbits 131  Depth: 24982'
+
+'QUbits 132  Depth: 25126'
+
+'QUbits 133  Depth: 25326'
+
+'QUbits 134  Depth: 25414'
+
+'QUbits 135  Depth: 25558'
+
+'QUbits 136  Depth: 25702'
+
+'QUbits 137  Depth: 25902'
+
+'QUbits 138  Depth: 25990'
+
+'QUbits 139  Depth: 26190'
+
+'QUbits 140  Depth: 26334'
+
+'QUbits 141  Depth: 26478'
+
+'QUbits 142  Depth: 26566'
+
+'QUbits 143  Depth: 26766'
+
+'QUbits 145  Depth: 27307'
+
+'QUbits 146  Depth: 27435'
+
+'QUbits 147  Depth: 27595'
+
+'QUbits 148  Depth: 30813'
+
+'QUbits 149  Depth: 30973'
+
+'QUbits 150  Depth: 31213'
+
+'QUbits 151  Depth: 31333'
+
+'QUbits 152  Depth: 31693'
+
+'QUbits 153  Depth: 31853'
+
+'QUbits 154  Depth: 32013'
+
+'QUbits 155  Depth: 32173'
+
+'QUbits 156  Depth: 32333'
+
+'QUbits 157  Depth: 32493'
+
+'QUbits 158  Depth: 32653'
+
+'QUbits 159  Depth: 32813'
+
+'QUbits 160  Depth: 32973'
+
+'QUbits 161  Depth: 33133'
+
+'QUbits 162  Depth: 33293'
+
+'QUbits 163  Depth: 33453'
+
+'QUbits 164  Depth: 33613'
+
+'QUbits 165  Depth: 33773'
+
+'QUbits 166  Depth: 33933'
+
+'QUbits 167  Depth: 34093'
+
+'QUbits 168  Depth: 34253'
+
+'QUbits 169  Depth: 34413'
+
+'QUbits 170  Depth: 34573'
+
+'QUbits 171  Depth: 34733'
+
+'QUbits 172  Depth: 34893'
+
+'QUbits 173  Depth: 35053'
+
+'QUbits 174  Depth: 35213'
+
+'QUbits 175  Depth: 35404'
+
+'QUbits 176  Depth: 35533'
+
+'QUbits 177  Depth: 35724'
+
+'QUbits 178  Depth: 35884'
+
+'QUbits 179  Depth: 39641'
+
+'QUbits 180  Depth: 39817'
+
+'QUbits 181  Depth: 39993'
+
+'QUbits 182  Depth: 40169'
+
+'QUbits 183  Depth: 40413'
+
+'QUbits 184  Depth: 40521'
+
+'QUbits 185  Depth: 40809'
+
+'QUbits 186  Depth: 40985'
+
+'QUbits 187  Depth: 41117'
+
+'QUbits 188  Depth: 41337'
+
+'QUbits 189  Depth: 41469'
+
+'QUbits 190  Depth: 41645'
+
+'QUbits 191  Depth: 41953'
+
+'QUbits 192  Depth: 42129'
+
+'QUbits 193  Depth: 42217'
+
+'QUbits 194  Depth: 42393'
+
+'QUbits 195  Depth: 42657'
+
+'QUbits 196  Depth: 42745'
+
+'QUbits 197  Depth: 43009'
+
+'QUbits 198  Depth: 43185'
+
+'QUbits 199  Depth: 43449'
+
+'QUbits 200  Depth: 43537'
+
+'QUbits 201  Depth: 43713'
+
+'QUbits 202  Depth: 43889'
+
+'QUbits 203  Depth: 44153'
+
+'QUbits 204  Depth: 44241'
+
+'QUbits 205  Depth: 44505'
+
+'QUbits 206  Depth: 44681'
+
+'QUbits 207  Depth: 44857'
+
+'QUbits 208  Depth: 44945'
+
+'QUbits 209  Depth: 45210'
+
+'QUbits 210  Depth: 45386'
+
+'QUbits 211  Depth: 45562'
+
+'QUbits 212  Depth: 45738'
+
+'QUbits 213  Depth: 50081'
+
+'QUbits 214  Depth: 50273'
+
+'QUbits 215  Depth: 50561'
+
+'QUbits 216  Depth: 50657'
+
+'QUbits 217  Depth: 50849'
+
+'QUbits 218  Depth: 51041'
+
+'QUbits 219  Depth: 51377'
+
+'QUbits 220  Depth: 51425'
+
+'QUbits 221  Depth: 51761'
+
+'QUbits 222  Depth: 51953'
+
+'QUbits 223  Depth: 52097'
+
+'QUbits 224  Depth: 52241'
+
+'QUbits 225  Depth: 52529'
+
+'QUbits 226  Depth: 52721'
+
+'QUbits 227  Depth: 52865'
+
+'QUbits 228  Depth: 53105'
+
+'QUbits 229  Depth: 53249'
+
+'QUbits 230  Depth: 53441'
+
+'QUbits 231  Depth: 53777'
+
+'QUbits 232  Depth: 53873'
+
+'QUbits 233  Depth: 54161'
+
+'QUbits 234  Depth: 54353'
+
+'QUbits 235  Depth: 54449'
+
+'QUbits 236  Depth: 54737'
+
+'QUbits 237  Depth: 54833'
+
+'QUbits 238  Depth: 55025'
+
+'QUbits 239  Depth: 55313'
+
+'QUbits 240  Depth: 55505'
+
+'QUbits 241  Depth: 55601'
+
+'QUbits 242  Depth: 55804'
+
+'QUbits 243  Depth: 56081'
+
+'QUbits 244  Depth: 56188'
+
+'QUbits 245  Depth: 56476'
+
+'QUbits 246  Depth: 56657'
+
+'QUbits 247  Depth: 56945'
+
+'QUbits 248  Depth: 57052'
+
+'QUbits 249  Depth: 57233'
+
+'QUbits 250  Depth: 62204'
+
+'QUbits 251  Depth: 62424'
+
+'QUbits 252  Depth: 62632'
+
+'QUbits 253  Depth: 62840'
+
+'QUbits 254  Depth: 63072'
+
+'QUbits 255  Depth: 63348'
+
+'QUbits 256  Depth: 63488'
+
+'QUbits 257  Depth: 63672'
+
+'QUbits 258  Depth: 63880'
+
+'QUbits 259  Depth: 64180'
+
+'QUbits 260  Depth: 64296'
+
+'QUbits 261  Depth: 64596'
+
+'QUbits 262  Depth: 64804'
+
+'QUbits 263  Depth: 65024'
+
+'QUbits 264  Depth: 65232'
+
+'QUbits 265  Depth: 65336'
+
+'QUbits 266  Depth: 65568'
+
+'QUbits 267  Depth: 65856'
+
+'QUbits 268  Depth: 65984'
+
+'QUbits 269  Depth: 66260'
+
+'QUbits 270  Depth: 66480'
+
+'QUbits 271  Depth: 66688'
+
+'QUbits 272  Depth: 66840'
+
+'QUbits 273  Depth: 67104'
+
+'QUbits 275  Depth: 67859'
+
+'QUbits 276  Depth: 68043'
+
+'QUbits 277  Depth: 68275'
+
+'QUbits 278  Depth: 68483'
+
+'QUbits 279  Depth: 68691'
+
+'QUbits 280  Depth: 69003'
+
+'QUbits 281  Depth: 69119'
+
+'QUbits 282  Depth: 69691'
+
+'QUbits 283  Depth: 69899'
+
+'QUbits 284  Depth: 70107'
+
+'QUbits 285  Depth: 70315'
+
+'QUbits 286  Depth: 70523'
+
+'QUbits 287  Depth: 70731'
+
+'QUbits 288  Depth: 70939'
+
+'QUbits 289  Depth: 71147'
+
+'QUbits 290  Depth: 71355'
+
+'QUbits 291  Depth: 77062'
+
+'QUbits 292  Depth: 77286'
+
+'QUbits 293  Depth: 77510'
+
+'QUbits 294  Depth: 77734'
+
+'QUbits 295  Depth: 77958'
+
+'QUbits 296  Depth: 78182'
+
+'QUbits 297  Depth: 78406'
+
+'QUbits 298  Depth: 78630'
+
+'QUbits 299  Depth: 78854'
+
+'QUbits 300  Depth: 79078'
+
+'QUbits 301  Depth: 79302'
+
+'QUbits 302  Depth: 79526'
+
+'QUbits 303  Depth: 79750'
+
+'QUbits 304  Depth: 79974'
+
+'QUbits 305  Depth: 80198'
+
+'QUbits 306  Depth: 80422'
+
+'QUbits 307  Depth: 80646'
+
+'QUbits 308  Depth: 80870'
+
+'QUbits 309  Depth: 81094'
+
+'QUbits 310  Depth: 81318'
+
+'QUbits 311  Depth: 81542'
+
+'QUbits 312  Depth: 81766'
+
+'QUbits 313  Depth: 81990'
+
+'QUbits 314  Depth: 82214'
+
+'QUbits 315  Depth: 82438'
+
+'QUbits 316  Depth: 82662'
+
+'QUbits 317  Depth: 82886'
+
+'QUbits 318  Depth: 83110'
+
+'QUbits 319  Depth: 83334'
+
+'QUbits 320  Depth: 83558'
+
+'QUbits 321  Depth: 83782'
+
+'QUbits 322  Depth: 84006'
+
+'QUbits 323  Depth: 84230'
+
+'QUbits 324  Depth: 84454'
+
+'QUbits 325  Depth: 84678'
+
+'QUbits 326  Depth: 84902'
+
+'QUbits 327  Depth: 85126'
+
+'QUbits 328  Depth: 85350'
+
+'QUbits 329  Depth: 85574'
+
+'QUbits 330  Depth: 85798'
+
+'QUbits 331  Depth: 86022'
+
+'QUbits 332  Depth: 86246'
+
+'QUbits 333  Depth: 86470'
+
+'QUbits 334  Depth: 86694'
+
+'QUbits 335  Depth: 93121'
+
+'QUbits 336  Depth: 93361'
+
+'QUbits 337  Depth: 93601'
+
+'QUbits 338  Depth: 93841'
+
+'QUbits 339  Depth: 94081'
+
+'QUbits 340  Depth: 94321'
+
+'QUbits 341  Depth: 94561'
+
+'QUbits 342  Depth: 94801'
+
+'QUbits 343  Depth: 95041'
+
+'QUbits 344  Depth: 95281'
+
+'QUbits 345  Depth: 95521'
+
+'QUbits 346  Depth: 95761'
+
+'QUbits 347  Depth: 96001'
+
+'QUbits 348  Depth: 96241'
+
+'QUbits 349  Depth: 96481'
+
+'QUbits 350  Depth: 96721'
+
+'QUbits 351  Depth: 96961'
+
+'QUbits 352  Depth: 97201'
+
+'QUbits 353  Depth: 97441'
+
+'QUbits 354  Depth: 97681'
+
+'QUbits 355  Depth: 97921'
+
